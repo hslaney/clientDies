@@ -32,7 +32,7 @@ public class RollingDie {
     {
         int [] list = new int [numTosses];
         for (int i = 1; i<=numTosses; i++){
-            list[i-1] = this.toss();
+            list[i-1] = toss();
             //this?
         }
         return list;

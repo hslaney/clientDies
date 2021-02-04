@@ -32,8 +32,30 @@ public class ClientTester {
 
     public static void prefixMerge(Client [] list1, Client [] list2,
                                    Client[] result){
+        for(int i = 0, counter = 0; i < result.length; i++){
+            if(i%2==0){
+                if(i>0 && list2[counter].compareClient(result[i-1]) == 0){
+                    counter++;
+                    result[i] = list1[counter];
+                }
+                else{
+                    result[i] = list2[counter];
+                }
+            }
+            else{
+                if(list1[counter].compareClient(result[i-1]) == 0){
+                    counter++;
+                    result[i] = list2[counter];
+                }
+                else{
+                    result[i] = list1[counter];
+                }
+                counter++;
+            }
 
 
+
+        }
     }
 
     public static void main(String [] args){
