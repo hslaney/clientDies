@@ -31,29 +31,22 @@ public class ClientTester {
     // postcondition: list1 and list2 are not modified
 
     public static void prefixMerge(Client [] list1, Client [] list2,
-                                   Client[] result){
-        for(int i = 0, counter = 0; i < result.length; i++){
-            if(i%2==0){
-                if(i>0 && list2[counter].compareClient(result[i-1]) == 0){
-                    counter++;
-                    result[i] = list1[counter];
-                }
-                else{
-                    result[i] = list2[counter];
-                }
+                                   Client[] result) {
+        int check1 = 0;
+        int check2 = 0;
+        for(int j = 0; j < result.length; j++){
+            if (list2[check2].compareClient(list1[check1]) < 0){
+                 result[j] = list2[check2];
+                 check2++;
+            }else if (list1[check1].compareClient(list2[check2]) < 0){
+                result[j] = list1[check1];
+                check1++;
             }
             else{
-                if(list1[counter].compareClient(result[i-1]) == 0){
-                    counter++;
-                    result[i] = list2[counter];
-                }
-                else{
-                    result[i] = list1[counter];
-                }
-                counter++;
+                result[j] = list1[check1];
+                check1++;
+                check2++;
             }
-
-
 
         }
     }
@@ -71,19 +64,25 @@ public class ClientTester {
         Client [] list1 = {c1,c3,c4,c5,c7,c8};
         Client [] list2 = {c2, c3, c5, c6, c7};
         Client [] list3 = {c3,c5,c6};
+        System.out.println(Arrays.toString(list1));
+        System.out.println(Arrays.toString(list2));
+        System.out.println(Arrays.toString(list3));
+
+        System.out.println();
 
 
         Client [] result1 = new Client[5];
         prefixMerge(list1,list2,result1);
         System.out.println(Arrays.toString(result1));
 
+        System.out.println();
         Client [] result2 = new Client[3];
         prefixMerge(list2,list3,result2);
         System.out.println(Arrays.toString(result2));
 
-        Client [] result3 = new Client[3];
-        prefixMerge(list3,list1,result3);
-        System.out.println(Arrays.toString(result3));
+//        Client [] result3 = new Client[3];
+//        prefixMerge(list3,list1,result3);
+//        System.out.println(Arrays.toString(result3));
 
     }
 }
