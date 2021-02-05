@@ -80,9 +80,9 @@ public class ClientTester {
         prefixMerge(list2,list3,result2);
         System.out.println(Arrays.toString(result2));
 
-//        Client [] result3 = new Client[3];
-//        prefixMerge(list3,list1,result3);
-//        System.out.println(Arrays.toString(result3));
+        Client [] result3 = new Client[3];
+        prefixMerge(list3,list1,result3);
+        System.out.println(Arrays.toString(result3));
 
     }
 }

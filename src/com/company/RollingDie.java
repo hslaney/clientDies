@@ -31,9 +31,8 @@ public class RollingDie {
     public int[] getRolls(int numTosses)
     {
         int [] list = new int [numTosses];
-        for (int i = 1; i<=numTosses; i++){
-            list[i-1] = toss();
-            //this?
+        for (int i = 0; i<numTosses; i++){
+            list[i] = toss();
         }
         return list;
     }
@@ -48,16 +47,25 @@ public class RollingDie {
 
     public int getBestRun(int[] values)
     {
-        int best = -1;
-        for(int i = 0; i <values.length - 1; i++){
-            if (values[i] == values [i+1]){
-                if (values[i] > best){
-                    best = i;
-                    //index?????
+        int bestIndex = -1;
+        int bestlength = 0;
+        int indexPos = 0;
+        for(int i = 0; i <values.length - 2; i++){
+            int length = 0;
+            if(values[i] == values[i+1]){
+                indexPos = i;
+                while (values[i] == values[i+1]){
+                    i++;
+                    length++;
                 }
             }
+            if(length > bestlength){
+                bestlength = length;
+                bestIndex = indexPos;
+            }
+
         }
-        return best;
+        return bestIndex;
     }
 
 
